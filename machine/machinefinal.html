@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="iconebinario.png" type="image/x-icon">
+    <title>Calculadora conversora</title>
+    <style>
+    
+        body {
+            background-image: url(assets/gradient.jpg);
+          
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: auto;
+            
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #0e132dd3;
+            padding: 20px;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: rgba(0, 0, 0, 0.354) 0px 0px 12px 0px;
+        }
+
+        .sidebar h1 {
+            font-size: 1.1em;
+            margin-bottom: 11.5px;
+            text-align: center;
+            
+            padding-left: 5px;
+        }
+
+        .sidebar a {
+            font-size: 1em;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff053fcc;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #ff053f89;
+        }
+
+        .sidebar a:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(41, 128, 185, 0.7);
+        }
+
+        .content {
+            margin-left: 220px; /* espaço para a sidebar */
+            padding-left: 35px;
+            padding-right: 12px;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            flex-grow: 1;
+            
+        }
+
+        /* estilo do iframe (onde o conteúdo será carregado) */
+        iframe {
+            width: 100%;
+            height: 90vh;
+            border: none;
+            border-radius: 8px;
+        }
+        .icon{
+            display: flex;
+            flex-direction: row;
+           width: max-content;
+           align-items: center ;
+        
+        }
+    </style>
+</head>
+
+<body>
+    <!-- sidebar com os links -->
+    <div class="sidebar">
+        <div class="icon">
+            <img src="assets/menu-aberto.png" alt="menu" width="25" height="25">
+        <h1>Escolha um Tópico</h1>
+        </div>
+        <a href="machinebiaeduda.html" target="conteudo">SPTecher's Machine</a>
+        <a href="videos.html" target="conteudo">Sistemas de Numeração</a>
+        <a href="imagens.html" target="conteudo">Material de apoio</a>
+    </div>
+
+    <!-- área de conteúdo onde o iframe será carregado (que aparecerá de cara) -->
+    <div class="content">
+        <iframe name="conteudo" src="machinebiaeduda.html"></iframe>
+    </div>
+</body>
+
+</html>

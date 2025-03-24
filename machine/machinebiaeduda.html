@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPTecher's Machine</title>
+    <style>
+        body {
+            background-color: transparent;
+            /* cor de fundo */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* define a fonte usada no corpo */
+            text-align: center;
+            /* centraliza o texto na tela */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* estilo para o título principal */
+        h1 {
+            color: #192139;
+            /* cor do título */
+            font-size: 2em;
+            /* tamanho da fonte */
+        }
+
+        h3 {
+            color: #333;
+            /* cor do texto */
+            font-size: 1.2em;
+        }
+
+        /* estilo para os campos de texto e select */
+        input[type="number"],
+        select {
+            padding: 8px;
+            /* preenchimento dentro dos campos */
+            font-size: 1em;
+            border: 2px solid #ff053fb9;
+            /* cor e largura da borda */
+            border-radius: 8px;
+            /* arredonda os cantos dos campos */
+            width: 200px;
+            /* largura dos campos */
+            text-decoration-line: none;
+        }
+
+        /* efeito quando clica no campo (em foco) */
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #ff0540;
+            /* cor da borda quando clica */
+            box-shadow: 0 0 5px #ff0540;
+            /* sombra quando clica */
+        }
+
+        /* estilo do botão */
+        button {
+            padding: 12px 25px;
+            /* preenchimento dentro do botão */
+            font-size: 1.2em;
+            /* tamanho da fonte */
+            background-color: #ff0540;
+            /* Cor de fundo do botão */
+            color: white;
+            /* Cor do texto */
+            border: none;
+            /* sem borda */
+            border-radius: 8px;
+            /* borda arredondada */
+            cursor: pointer;
+            /* ponteiro indica clique */
+            margin-top: 20px;
+            /* Margem superior */
+        }
+
+        /* efeito quando passa o mouse em cima do botão */
+        button:hover {
+            background-color: #ff053fcc;
+            /* muda a cor de fundo */
+            transform: scale(1.05);
+            /* aumenta um pouco o tamanho */
+        }
+
+        button:active {
+            transform: scale(1);
+            /* quando o botão é pressionado volta ao tamanho normal */
+        }
+
+        .resultado {
+            background-color: #333;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            /* negrito */
+            margin-top: 20px;
+            /* margem para dar distância entre as caixas */
+            padding: 9px;
+            /* preenchimento */
+            border-radius: 8px;
+            /* bordas arredondadas */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* sombra ao redor da caixa */
+            display: none;
+            /* inicialmente escondido */
+        }
+
+        .resultado:hover {
+            background-color: #444;
+            /* altera a cor de fundo */
+        }
+
+        /* caixa principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 500px; /* largura */
+          
+            background-color: #ffffff; /* cor de fundo */
+            border-radius: 13px;
+            border: 2px solid rgba(220, 20, 60, 0);
+            box-shadow: rgba(246, 245, 245, 0.35) 0px 6px 12px;
+            /* padding: 30px; Preenchimento dentro da caixa */
+             margin-top: 30px; /*margem superior */
+            /* margin-bottom: 30px; margem inferior */
+            /* margin-left: auto; centraliza a caixa */
+            /* margin-right: auto; centraliza a caixa */
+        }
+
+        marquee{
+            color: rgb(255, 255, 255);
+            font-size: larger;
+            /* font-style: italic; */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <marquee>Desenvolvido por Beatriz e Maria Eduarda - 1CCOA</marquee>
+
+    <div class="container">
+        <h1>SPTecher's Machine</h1>
+        <h3>Escolha a base:</h3>
+
+        <!-- escolher a base -->
+        <select id="ipt_base">
+            <option value="decimal">Decimal</option>
+            <option value="binario">Binário</option>
+            <option value="hexadecimal">Hexadecimal</option>
+            <option value="octal">Octal</option>
+        </select>
+        <br><br>
+
+        <h3>Digite um número:</h3>
+        <input id="ipt_numero" type="number" placeholder="Ex: 42...">
+        <br><br>
+
+        <button onclick="converter()">Converter</button>
+
+        <h3>Resultados:</h3>
+
+        <div id="div_decimal" class="resultado"></div>
+        <div id="div_binario" class="resultado"></div>
+        <div id="div_hexadecimal" class="resultado"></div>
+        <div id="div_octal" class="resultado"></div>
+    </div>
+
+    <script>
+
+        function converter() {
+
+            var numero = ipt_numero.value;
+            var base = ipt_base.value;
+            var decimal;
+
+            if (base === "decimal") {
+                decimal = Number(numero);
+            } else if (base === "binario") {
+                decimal = parseInt(numero, 2);
+            } else if (base === "hexadecimal") {
+                decimal = parseInt(numero, 16);
+            } else if (base === "octal") {
+                decimal = parseInt(numero, 8);
+            }
+
+            // converte o número para as outras bases
+            var resdecimal = `Decimal:  ${decimal.toString(10)}`;
+            var resbinario = `Binário:  ${decimal.toString(2)}`;
+            var reshexadecimal = `Hexadecimal: ${decimal.toString(16)}`;
+            var resoctal = `Octal:  ${decimal.toString(8)}`;
+
+            // exibir os resultados
+            div_decimal.innerHTML = resdecimal;
+            div_binario.innerHTML = resbinario;
+            div_hexadecimal.innerHTML = reshexadecimal;
+            div_octal.innerHTML = resoctal;
+
+            // para aparecer os blocos de resultado 
+            div_decimal.style.display = "block";
+            div_binario.style.display = "block";
+            div_hexadecimal.style.display = "block";
+            div_octal.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
